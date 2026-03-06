@@ -1,22 +1,23 @@
-<?php
-// 高危漏洞代码：仅供测试！！！
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>漏洞测试网站 - 用于漏洞检测工具练习</title>
+</head>
+<body>
+<h1>用户登录（漏洞测试专用）</h1>
+<form action="login.php" method="GET">
+    用户名：<input type="text" name="username"><br><br>
+    密&nbsp;&nbsp;&nbsp;码：<input type="password" name="password"><br><br>
+    <button type="submit">登录</button>
+</form>
 
-// 1. 接收 GET 参数（明文传输）
-$user = $_GET['username'];
-$pass = $_GET['password'];
-
-// 2. 高危 SQL 注入漏洞（直接拼接变量，无过滤）
-$sql = "SELECT * FROM users WHERE username='$user' AND password='$pass'";
-
-// 3. 弱口令
-$weak_user = "admin";
-$weak_pass = "admin";
-
-if($user == $weak_user && $pass == $weak_pass) {
-    echo "登录成功！弱口令存在！";
-} else {
-    echo "登录失败";
-}
-
-echo "<br>你的SQL语句为：$sql";
-?>
+<br><hr>
+<h3>本网站包含漏洞（供测试）：</h3>
+<ul>
+  <li>1. SQL 注入漏洞</li>
+  <li>2. 弱口令漏洞</li>
+  <li>3. GET 明文传输密码</li>
+</ul>
+</body>
+</html>
